@@ -1,62 +1,82 @@
 @import '@mixins';
 @import '@variables';
 
-.admin-header {
-  max-width: 1870px;
-  padding: 12.5px 16px;
-  margin: 0 16px 27px;
-  border-radius: 10px;
-  background-color: $color-blue-dark;
-  box-sizing: border-box;
-
+.admin-page {
   @include small-devices {
-    padding: 14px 18px;
-    margin: 0 0 32px;
-    border-radius: 17px;
   }
 
   @include medium-devices {
-    padding: 18px 24px;
-    margin-bottom: 34px;
   }
 
-  &__content {
-    // width: 100%;
-    display: flex;
-
-    @include small-devices {
-      flex-grow: 0;
-      gap: 44px;
-      justify-content: space-between;
-    }
-  }
-
-  &__wrapper {
-    display: flex;
-    align-items: center;
-    align-self: stretch;
-    justify-content: space-between;
-    flex-grow: 1;
-
-    @include small-devices {
-      // flex-grow: 0;
-      gap: 44px;
-      flex: 0 0 auto;
-    }
-  }
-
-  &__logo {
-    font-size: 22px;
+  &__title,
+  &__subtitle {
+    color: $color-white-main;
+    font-size: 18px;
     font-weight: 600;
-    line-height: 29px;
-    padding-right: 28px;
-  }
-
-  &__button-user-menu.button-user-menu {
-    display: none;
+    line-height: 24px;
 
     @include small-devices {
-      display: flex;
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    @include medium-devices {
+      font-size: 22px;
+      line-height: 29px;
     }
   }
+
+  &__title {
+    padding: 19px 16px;
+    border-bottom: 1px solid $color-blue-cobalt;
+
+    @include small-devices {
+      padding: 24px;
+    }
+
+    @include medium-devices {
+      padding: 24px 34px;
+    }
+  }
+
+  &__subtitle {
+    padding: 28px 16px;
+
+    @include small-devices {
+      padding: 29px 24px 27px;
+    }
+
+    @include medium-devices {
+      padding: 29px 34px 24px;
+    }
+  }
+
+  &__search-block {
+    padding: 0 16px 18px;
+
+    @include small-devices {
+      padding: 0 24px 18px;
+    }
+
+    @include medium-devices {
+      padding: 0 34px 24px;
+    }
+  }
+
+  &__table {
+    margin: 0 16px;
+    overflow-y: auto;
+
+    @include small-devices {
+      margin: 0 24px;
+    }
+
+    @include medium-devices {
+      margin: 0 34px;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
 }

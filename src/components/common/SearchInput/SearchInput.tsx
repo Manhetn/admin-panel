@@ -15,8 +15,9 @@ const SearchInput: React.FC<ISearchInput> = ({
 }) => {
   return (
     <div className="search-input">
-      <IconSearch stylesClass="" size={16} />
+      <IconSearch stylesClass="search-input__icon" size={16} />
       <input
+        className="search-input__input"
         type="text"
         value={value}
         placeholder={placeholder}

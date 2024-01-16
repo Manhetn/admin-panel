@@ -28,7 +28,8 @@
       "@common": ["src/components/common/index.ts"],
       "@layouts": ["src/layouts/index.ts"],
       "@ui": ["src/components/ui/index.ts"],
-      "@icons": ["src/components/common/icons.tsx"]
+      "@icons": ["src/components/common/icons.tsx"],
+      "@interfaces": ["src/core/interfaces/index.ts"]
     }
   },
   "include": ["src"],

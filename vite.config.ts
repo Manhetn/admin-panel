@@ -17,6 +17,7 @@ export default defineConfig({
       '@common': 'src/components/common/index.ts',
       '@ui': 'src/components/ui',
       '@icons': 'src/components/common/icons.tsx',
+      '@interfaces': 'src/core/interfaces/index.ts',
     },
   },
 });

@@ -1,0 +1,80 @@
+@import '@mixins';
+@import '@variables';
+
+.user-table {
+  $this: &;
+
+  width: 100%;
+  border-spacing: 0;
+
+  @include small-devices {
+  }
+
+  @include medium-devices {
+  }
+
+  &__header-cell,
+  &__cell {
+    text-align: center;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  &__header-cell {
+    padding: 14px 34.5px;
+    background-color: $color-black-primary;
+    color: $color-gray-main;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  &__cell {
+    min-height: 64px;
+    color: $color-white;
+    min-width: 93px;
+    padding: 24px 20px;
+    // width: 100%;
+    border-width: 0;
+    border-bottom: 1px solid $color-blue-tertiary;
+
+    &_email {
+      min-width: 250px;
+    }
+
+    @include medium-devices {
+      min-width: 250px;
+    }
+  }
+
+  &__actions-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10;
+  }
+}
+
+.bitton-icon {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+
+  &__icon {
+    color: $color-blue-main;
+  }
+}
