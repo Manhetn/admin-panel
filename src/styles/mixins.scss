@@ -1,0 +1,33 @@
+@mixin small-devices {
+  @media screen and (min-width: 576px) {
+    @content;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@mixin medium-devices {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@mixin large-devices {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@mixin x-large-devices {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@mixin xx-large-devices {
+  @media screen and (min-width: 1400px) {
+    @content;
+  }
+}

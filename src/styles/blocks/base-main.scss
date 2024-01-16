@@ -1,0 +1,10 @@
+.base-main {
+  max-width: 1870px;
+  background-color: $color-blue-dark;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include small-devices {
+    border-radius: 18px;
+  }
+}
