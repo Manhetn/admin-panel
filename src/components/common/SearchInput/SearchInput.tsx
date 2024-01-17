@@ -5,12 +5,14 @@ import { IconSearch } from '@icons';
 interface ISearchInput {
   value: string;
   handleChange: (value: string) => void;
+  disabled?: boolean;
   placeholder?: string;
 }
 
 const SearchInput: React.FC<ISearchInput> = ({
   value,
   handleChange,
+  disabled = false,
   placeholder = 'Поиск',
 }) => {
   return (
@@ -20,6 +22,7 @@ const SearchInput: React.FC<ISearchInput> = ({
         className="search-input__input"
         type="text"
         value={value}
+        disabled={disabled}
         placeholder={placeholder}
         onChange={(e) => handleChange(e.target.value)}
       />

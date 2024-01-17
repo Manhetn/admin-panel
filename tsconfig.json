@@ -29,7 +29,9 @@
       "@layouts": ["src/layouts/index.ts"],
       "@ui": ["src/components/ui/index.ts"],
       "@icons": ["src/components/common/icons.tsx"],
-      "@interfaces": ["src/core/interfaces/index.ts"]
+      "@interfaces": ["src/core/interfaces/index.ts"],
+      "@services": ["src/core/services/index.ts"],
+      "@configs": ["src/core/configs/index.ts"]
     }
   },
   "include": ["src"],

@@ -9,6 +9,7 @@ interface IUserTableProps {
 }
 
 const UserTable: React.FC<IUserTableProps> = ({ data }) => {
+  
   return (
     <table className="user-table">
       <thead>
@@ -27,10 +28,10 @@ const UserTable: React.FC<IUserTableProps> = ({ data }) => {
             <td className="user-table__cell user-table__cell_email">
               {user.email}
             </td>
-            <td className="user-table__cell">{user.name}</td>
+            <td className="user-table__cell">{user.email}</td>
             <td className="user-table__cell">{user.role}</td>
-            <td className="user-table__cell">{user.subscription}</td>
-            <td className="user-table__cell">{user.tokens}</td>
+            <td className="user-table__cell">{user.subscription.plan.type}</td>
+            <td className="user-table__cell">{user.subscription.tokens} TKN</td>
             <td className="user-table__cell">
               <div className="user-table__actions-wrapper">
                 <button

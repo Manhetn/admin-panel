@@ -1,11 +1,16 @@
 .base-main {
-  // width: 100%;
   max-width: 1870px;
   background-color: $color-blue-dark;
   box-sizing: border-box;
   overflow: hidden;
+  padding-bottom: 51px;
 
   @include small-devices {
+    padding-bottom: 34px;
     border-radius: 18px;
+  }
+
+  @include medium-devices {
+    padding-bottom: 45px;
   }
 }

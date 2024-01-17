@@ -1,3 +1,3 @@
-import { IUserData } from './user';
+import { IUserData, IUserSubscriptionData, IUserPlanData } from './user';
 
-export type { IUserData };
+export type { IUserData, IUserSubscriptionData, IUserPlanData };
