@@ -5,6 +5,8 @@ import { IUserData } from '@interfaces';
 import UserTable from 'src/components/ui/UserTable/UserTable';
 import './styles.scss';
 import ReactPaginate from 'react-paginate';
+import { IconPaginationArrowLeft, IconPaginationArrowRight } from '@icons';
+// import 'react-paginate/dist/react-paginate.css';
 
 const UserData: IUserData[] = [
   {
@@ -50,16 +52,24 @@ const AdminPage: React.FC = () => {
       </div>
       <div className="admin-page__pagination">
         <ReactPaginate
-          previousLabel={'←'}
-          nextLabel={'→'}
-          breakLabel={'...'}
-          // breakClassName={'break-me'}
+          previousLabel={
+            <IconPaginationArrowLeft stylesClass="pagination__icon" />
+          }
+          nextLabel={
+            <IconPaginationArrowRight stylesClass="pagination__icon" />
+          }
+          breakLabel={'....'}
           pageCount={104}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={4}
           onPageChange={handlePageChange}
           containerClassName={'pagination'}
-          activeClassName={'active'}
+          pageClassName={'pagination__page'}
+          pageLinkClassName={'pagination__button'}
+          breakClassName={'pagination__break'}
+          activeClassName={'pagination__page pagination__page_active'}
+          previousClassName={'pagination__arrow'}
+          nextClassName={'pagination__arrow'}
         />
       </div>
     </BaseAdminLayout>
