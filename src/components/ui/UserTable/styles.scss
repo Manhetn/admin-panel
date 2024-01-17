@@ -52,6 +52,14 @@
     border-width: 0;
     border-bottom: 1px solid $color-blue-tertiary;
 
+    &_with-button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
     &_email {
       min-width: 250px;
     }
@@ -61,20 +69,11 @@
     }
   }
 
-  &__actions-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10;
-  }
-}
-
-.bitton-icon {
-  background-color: transparent;
-  border: none;
-  width: fit-content;
-
-  &__icon {
+  &__icon-actions {
     color: $color-blue-main;
+  }
+
+  &__icon-sort {
+    color: $color-blue-gray;
   }
 }
