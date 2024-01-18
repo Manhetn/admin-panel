@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BaseAdminLayout } from '@layouts';
-import { SearchInput } from '@common';
+import { Backdrop, SearchInput } from '@common';
 
 import './styles.scss';
 import ReactPaginate from 'react-paginate';
@@ -23,6 +23,8 @@ const AdminPage: React.FC = () => {
   const [search, setSearch] = useState('');
   const [totalPages, setTotalPages] = useState(0);
   const [currentUsers, setCurrentUsers] = useState<IUserData[]>([]);
+
+  const [showUsersDetailsDrawer, setUsersDetailsDrawer] = useState(true);
 
   const [searchTimer, setSearchTimer] = useState<ReturnType<
     typeof setTimeout
@@ -101,12 +103,16 @@ const AdminPage: React.FC = () => {
           </div>
         )}
       </BaseAdminLayout>
-      <Drawer
-        isOpen={true}
-        handleClose={function (): void {
-          throw new Error('Function not implemented.');
-        }}
-      />
+      <Backdrop
+        isShow={showUsersDetailsDrawer}
+        onClickHendler={() => setUsersDetailsDrawer(false)}
+      >
+        <Drawer
+          isOpen={showUsersDetailsDrawer}
+          title="testmail@gmail.com"
+          handleClose={() => setUsersDetailsDrawer(false)}
+        />
+      </Backdrop>
     </>
   );
 };
