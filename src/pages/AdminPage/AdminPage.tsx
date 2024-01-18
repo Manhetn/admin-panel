@@ -111,7 +111,9 @@ const AdminPage: React.FC = () => {
           isOpen={showUsersDetailsDrawer}
           title="testmail@gmail.com"
           handleClose={() => setUsersDetailsDrawer(false)}
-        />
+        >
+          <h3 className="admin-page__drawer-title">Использование токенов</h3>
+        </Drawer>
       </Backdrop>
     </>
   );
