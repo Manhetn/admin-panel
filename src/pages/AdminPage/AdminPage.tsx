@@ -24,7 +24,7 @@ const AdminPage: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [currentUsers, setCurrentUsers] = useState<IUserData[]>([]);
 
-  const [showUsersDetailsDrawer, setUsersDetailsDrawer] = useState(true);
+  const [showUsersDetailsDrawer, setUsersDetailsDrawer] = useState(false);
 
   const [searchTimer, setSearchTimer] = useState<ReturnType<
     typeof setTimeout
@@ -34,6 +34,10 @@ const AdminPage: React.FC = () => {
     const startIndex = selectedPage.selected * 10;
     const endIndex = startIndex + 10;
     setCurrentUsers(usersList!.slice(startIndex, endIndex));
+  };
+
+  const handleShowUserDetails = (id: string) => {
+    console.log(id);
   };
 
   useEffect(() => {
@@ -75,7 +79,14 @@ const AdminPage: React.FC = () => {
           <SearchInput value={search} handleChange={setSearch} />
         </div>
         <div className="admin-page__table">
-          {currentUsers ? <UserTable data={currentUsers} /> : <></>}
+          {currentUsers ? (
+            <UserTable
+              data={currentUsers}
+              handleClickUser={(id) => handleShowUserDetails(id)}
+            />
+          ) : (
+            <></>
+          )}
         </div>
 
         {currentUsers.length > 10 && (

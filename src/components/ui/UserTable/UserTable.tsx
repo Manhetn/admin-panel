@@ -6,9 +6,10 @@ import { IconArrowDown, IconArrowUp, IconEdit, IconTrashCan } from '@icons';
 
 interface IUserTableProps {
   data: IUserData[];
+  handleClickUser: (id: string) => void;
 }
 
-const UserTable: React.FC<IUserTableProps> = ({ data }) => {
+const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [isSorted, setIsSorted] = useState(false);
 
@@ -53,7 +54,14 @@ const UserTable: React.FC<IUserTableProps> = ({ data }) => {
             <td className="user-table__cell user-table__cell_email">
               {user.email}
             </td>
-            <td className="user-table__cell">{user.name}</td>
+            <td className="user-table__cell">
+              <button
+                className="button-text"
+                onClick={() => handleClickUser(user.id)}
+              >
+                {user.name}
+              </button>
+            </td>
             <td className="user-table__cell">{user.role}</td>
             <td className="user-table__cell">{user.subscription.plan.type}</td>
             <td className="user-table__cell">{user.subscription.tokens} TKN</td>

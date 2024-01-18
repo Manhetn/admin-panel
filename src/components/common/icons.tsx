@@ -19,14 +19,14 @@ export const IconCross: React.FC<IIconProps> = ({ stylesClass, size = 24 }) => {
       <path
         d="M4 3.33331L20 19.3333"
         stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M4 19.3333L20 3.33331"
         stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );
