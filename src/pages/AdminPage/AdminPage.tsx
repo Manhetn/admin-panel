@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { BaseAdminLayout } from '@layouts';
 import { SearchInput } from '@common';
 
-import UserTable from 'src/components/ui/UserTable/UserTable';
 import './styles.scss';
 import ReactPaginate from 'react-paginate';
 import { IconPaginationArrowLeft, IconPaginationArrowRight } from '@icons';
@@ -14,6 +13,7 @@ import {
 } from 'src/core/store/slice/usersSlice';
 import useAppSelector from 'src/core/hooks/useAppSelector';
 import { IUserData } from '@interfaces';
+import { Drawer, UserTable } from '@ui';
 
 const AdminPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -64,42 +64,50 @@ const AdminPage: React.FC = () => {
   }, [search]);
 
   return (
-    <BaseAdminLayout>
-      {isLoading && <></>}
-      <h1 className="admin-page__title">Моя организация</h1>
-      <h2 className="admin-page__subtitle">Пользователи</h2>
-      <div className="admin-page__search-block">
-        <SearchInput value={search} handleChange={setSearch} />
-      </div>
-      <div className="admin-page__table">
-        {currentUsers ? <UserTable data={currentUsers} /> : <></>}
-      </div>
-      
-      {currentUsers.length > 10 && (
-        <div className="admin-page__pagination">
-          <ReactPaginate
-            previousLabel={
-              <IconPaginationArrowLeft stylesClass="pagination__icon" />
-            }
-            nextLabel={
-              <IconPaginationArrowRight stylesClass="pagination__icon" />
-            }
-            breakLabel={'....'}
-            pageCount={totalPages}
-            marginPagesDisplayed={1}
-            pageRangeDisplayed={4}
-            onPageChange={handlePageChange}
-            containerClassName={'pagination'}
-            pageClassName={'pagination__page'}
-            pageLinkClassName={'pagination__button'}
-            breakClassName={'pagination__break'}
-            activeClassName={'pagination__page pagination__page_active'}
-            previousClassName={'pagination__arrow'}
-            nextClassName={'pagination__arrow'}
-          />
+    <>
+      <BaseAdminLayout>
+        {isLoading && <></>}
+        <h1 className="admin-page__title">Моя организация</h1>
+        <h2 className="admin-page__subtitle">Пользователи</h2>
+        <div className="admin-page__search-block">
+          <SearchInput value={search} handleChange={setSearch} />
         </div>
-      )}
-    </BaseAdminLayout>
+        <div className="admin-page__table">
+          {currentUsers ? <UserTable data={currentUsers} /> : <></>}
+        </div>
+
+        {currentUsers.length > 10 && (
+          <div className="admin-page__pagination">
+            <ReactPaginate
+              previousLabel={
+                <IconPaginationArrowLeft stylesClass="pagination__icon" />
+              }
+              nextLabel={
+                <IconPaginationArrowRight stylesClass="pagination__icon" />
+              }
+              breakLabel={'....'}
+              pageCount={totalPages}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={4}
+              onPageChange={handlePageChange}
+              containerClassName={'pagination'}
+              pageClassName={'pagination__page'}
+              pageLinkClassName={'pagination__button'}
+              breakClassName={'pagination__break'}
+              activeClassName={'pagination__page pagination__page_active'}
+              previousClassName={'pagination__arrow'}
+              nextClassName={'pagination__arrow'}
+            />
+          </div>
+        )}
+      </BaseAdminLayout>
+      <Drawer
+        isOpen={true}
+        handleClose={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    </>
   );
 };
 
