@@ -6,7 +6,7 @@ import { IconArrowDown, IconArrowUp, IconEdit, IconTrashCan } from '@icons';
 
 interface IUserTableProps {
   data: IUserData[];
-  handleClickUser: (id: string) => void;
+  handleClickUser: (userData: IUserData) => void;
 }
 
 const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
@@ -57,7 +57,7 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
             <td className="user-table__cell">
               <button
                 className="button-text"
-                onClick={() => handleClickUser(user.id)}
+                onClick={() => handleClickUser(user)}
               >
                 {user.name}
               </button>

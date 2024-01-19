@@ -1,3 +1,16 @@
-import { IUserData, IUserSubscriptionData, IUserPlanData } from './user';
+import {
+  IUserData,
+  IUserSubscriptionData,
+  IUserPlanData,
+  IUserTransactions,
+} from './user';
+import { IChartItem, IChartItem2 } from './chart';
 
-export type { IUserData, IUserSubscriptionData, IUserPlanData };
+export type {
+  IUserData,
+  IUserSubscriptionData,
+  IUserPlanData,
+  IUserTransactions,
+  IChartItem,
+  IChartItem2,
+};

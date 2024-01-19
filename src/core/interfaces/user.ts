@@ -27,3 +27,23 @@ export interface IUserPlanData {
   currency: string;
   tokens: number;
 }
+
+export interface IUserTransactions {
+  id: string;
+  provider: string;
+  amount: number;
+  currency: string;
+  meta: null | number | string;
+  status: string;
+  type: string;
+  plan_id: null | number | string;
+  user_id: string;
+  referral_id: null | number | string;
+  created_at: string;
+  external_id: null | number | string;
+}
+
+export interface ISelectedUser {
+  profile: IUserData;
+  transactions: IUserTransactions[];
+}

@@ -8,7 +8,7 @@ const http = axios.create({
 
 http.interceptors.response.use(
   (response) => {
-    return response.data.data;
+    return response.data.data ? response.data.data : response.data;
   },
   (error) => {
     const expectedErrors =

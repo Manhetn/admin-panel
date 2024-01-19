@@ -20,6 +20,7 @@ export default defineConfig({
       '@interfaces': 'src/core/interfaces/index.ts',
       '@services': 'src/core/services/index.ts',
       '@configs': 'src/core/configs/index.ts',
+      '@utils': 'src/core/utils/index.ts',
     },
   },
 });

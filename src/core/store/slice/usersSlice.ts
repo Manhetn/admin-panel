@@ -5,8 +5,9 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from '../store';
 import { HttpService } from '@services';
 import { API_CONFIG } from '@configs';
-import { IUserData } from '@interfaces';
+import { IUserData, IUserTransactions } from '@interfaces';
 import { AxiosError } from 'axios';
+import { ISelectedUser } from 'src/core/interfaces/user';
 
 // import { IErrorObject } from '../models/errors';
 // import { AppDispatch, RootState } from './store';
@@ -19,12 +20,16 @@ interface IUsersState {
   isLoading: boolean;
   error: string | null;
   usersData: IUserData[] | null;
+  userTransactions: IUserTransactions[] | null;
+  selectedUser: ISelectedUser | null;
 }
 
 const initialState: IUsersState = {
   isLoading: false,
   error: null,
   usersData: null,
+  userTransactions: null,
+  selectedUser: null,
 };
 
 const usersSlice = createSlice({
@@ -45,6 +50,18 @@ const usersSlice = createSlice({
     usersSetData: (state, action: PayloadAction<IUserData[]>) => {
       state.usersData = action.payload;
     },
+    usersSetUserTransactions: (
+      state,
+      action: PayloadAction<IUserTransactions[] | null>
+    ) => {
+      state.userTransactions = action.payload;
+    },
+    usersSetSelectedUser: (
+      state,
+      action: PayloadAction<ISelectedUser | null>
+    ) => {
+      state.selectedUser = action.payload;
+    },
   },
 });
 
@@ -55,6 +72,7 @@ const {
   usersRequestedSuccess,
   usersRequestedFaild,
   usersSetData,
+  usersSetSelectedUser,
 } = actions;
 
 export const isUsersLoading = () => (state: RootState) => state.users.isLoading;
@@ -64,7 +82,7 @@ export const loadUsers = () => async (dispatch: AppDispatch) => {
 
   try {
     const data: IUserData[] = await HttpService.get(API_CONFIG.endpoints.users);
-    console.log(data);
+
     dispatch(usersSetData(data));
     dispatch(usersRequestedSuccess());
   } catch (error) {
@@ -74,54 +92,36 @@ export const loadUsers = () => async (dispatch: AppDispatch) => {
   }
 };
 
+export const loadUserTransactions =
+  (userData: IUserData) => async (dispatch: AppDispatch) => {
+    dispatch(usersRequested());
+
+    try {
+      const data: IUserTransactions[] = await HttpService.get(
+        `${API_CONFIG.endpoints.user}/${userData.id}/transactions`
+      );
+
+      dispatch(
+        usersSetSelectedUser({
+          profile: userData,
+          transactions: data,
+        })
+      );
+      // dispatch(usersSetUserTransactions(data));
+      dispatch(usersRequestedSuccess());
+    } catch (error) {
+      const err = error as AxiosError;
+
+      dispatch(usersRequestedFaild(err.message));
+    }
+  };
+
 export const getUsersList = () => (state: RootState) => state.users.usersData;
-// export const getUsersList = () =>
 
-// export const logIn =
-//   (payload: IUserLogInData) => async (dispatch: AppDispatch) => {
-//     dispatch(userRequested());
-//     try {
-//       const data = await authService.logIn(payload);
-//       dispatch(authRequestSuccess(data));
-//       localStorageService.setTokens(data);
-//       history.replace('/tasks');
-//     } catch (error) {
-//       const err = error as AxiosError;
-//       dispatch(userRequestedFaild(err));
-//     }
-//   };
+export const getUserTransactions = () => (state: RootState) =>
+  state.users.userTransactions;
 
-// export const logOut = () => async (dispatch: AppDispatch) => {
-//   dispatch(userRequested());
-//   try {
-//     await userService.logOut();
-//     dispatch(userLogOut());
-//     localStorageService.removeAuthData();
-//     history.replace('/');
-//   } catch (error) {
-//     const err = error as AxiosError;
-//     dispatch(userRequestedFaild(err));
-//   }
-// };
-
-// export const loadProfile = () => async (dispatch: AppDispatch) => {
-//   dispatch(userRequested());
-//   try {
-//     const data = await userService.get();
-//     dispatch(userSetProfile(data));
-//   } catch (error) {
-//     const err = error as AxiosError;
-//     dispatch(userRequestedFaild(err));
-//   }
-// };
-
-// export const getUserId = () => (state: RootState) => state.user.userId;
-// export const getIsLoading = () => (state: RootState) => state.user.isLoading;
-// export const getIsLoggedIn = () => (state: RootState) => state.user.isLoggedIn;
-// export const getUserProfile = () => (state: RootState) =>
-//   state.user.userProfile;
-// export const getIsProfileLoaded = () => (state: RootState) =>
-//   state.user.isProfileLoaded;
-// export const getUserError = () => (state: RootState) => state.user.error;
+export const getSelectedUser = () => (state: RootState) =>
+  state.users.selectedUser;
 
 export default usersReducer;
