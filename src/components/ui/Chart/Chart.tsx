@@ -551,19 +551,13 @@ const Chart: React.FC<IChartProps> = () => {
               axisLine={false}
               tickLine={false}
               height={36}
-              tick={{
-                fontSize: 12,
-                fill: '#616D8D',
-              }}
+              className="recharts-customized__xaxis"
             />
             <YAxis
               orientation="right"
               axisLine={false}
               tickLine={false}
-              tick={{
-                fontSize: 12,
-                fill: '#616D8D',
-              }}
+              className="recharts-customized__yaxis"
             />
             <Legend
               height={26}
@@ -609,6 +603,7 @@ const Chart: React.FC<IChartProps> = () => {
               stroke="#1C64F2"
               fill="#222B44"
               endIndex={Math.min(20, chartData.length - 1)}
+              className="recharts-customized__brush"
             >
               <LineChart
                 width={343}

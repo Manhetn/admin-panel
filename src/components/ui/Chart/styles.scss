@@ -1,2 +1,52 @@
 @import '@mixins';
 @import '@variables';
+
+.recharts-customized {
+  &__yaxis,
+  &__xaxis {
+    .recharts-text.recharts-cartesian-axis-tick-value {
+      fill: #616d8d;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+
+      @include medium-devices {
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  &__brush {
+    rect:not(recharts-brush-slide) {
+      stroke: transparent;
+    }
+
+    .recharts-brush-slide {
+      fill: #1c64f2;
+    }
+
+    .recharts-layer.recharts-brush-traveller {
+      opacity: 0.6;
+
+      line {
+        stroke: transparent;
+      }
+    }
+
+    .recharts-layer.recharts-brush-texts {
+      text > tspan {
+        fill: #fff;
+
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 16px;
+
+        @include medium-devices {
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+}
