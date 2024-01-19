@@ -1,36 +1,22 @@
-// import { IChartItem2, IUserTransactions } from '@interfaces';
-import { getModifiedDataForChart } from '@utils';
 import React from 'react';
-// import {
-//   XAxis,
-//   YAxis,
-//   Tooltip,
-//   ResponsiveContainer,
-//   Area,
-//   AreaChart,
-//   CartesianGrid,
-//   // ReferenceArea,
-// } from 'recharts';
-// import React, { useState } from 'react';
 import {
-  LineChart,
-  AreaChart,
-  Area,
+  ComposedChart,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
   Legend,
-  TooltipProps,
   Brush,
+  Area,
+  CartesianGrid,
   Line,
+  LineChart,
 } from 'recharts';
 import { ISelectedUser } from 'src/core/interfaces/user';
+import { getModifiedDataForChart } from '@utils';
+import './styles.scss';
 
-interface IChartProps {
-  // data: ISelectedUser;
-}
+interface IChartProps {}
 
 const data: ISelectedUser = {
   profile: {
@@ -526,7 +512,7 @@ const data: ISelectedUser = {
 
 const renderTooltipContent = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  props: TooltipProps<any, any>
+  props: any
 ): React.ReactNode => {
   const { active, payload, label } = props;
 
@@ -551,119 +537,107 @@ const Chart: React.FC<IChartProps> = () => {
 
   return (
     <>
-      <ResponsiveContainer width="100%" height={259}>
-        <AreaChart width={343} height={309} data={chartData}>
-          <Brush
-            dataKey="date"
-            height={30}
-            stroke="#1C64F2"
-            startIndex={0}
-            fill="rgba(0, 0, 255, 0.1)"
-            endIndex={Math.min(20, chartData.length - 1)}
+      <div style={{ marginBottom: '12px' }}>
+        <ResponsiveContainer width="100%" height={359}>
+          <ComposedChart
+            width={430}
+            height={351}
+            data={chartData}
+            margin={{ bottom: 20 }}
           >
-            {/* <LineChart
-              width={730}
-              height={250}
-              data={chartData}
-              // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            <CartesianGrid stroke="#222b44" strokeWidth={1} vertical={false} />
+            <XAxis
+              dataKey="date"
+              axisLine={false}
+              tickLine={false}
+              height={36}
+              tick={{
+                fontSize: 12,
+                fill: '#616D8D',
+              }}
+            />
+            <YAxis
+              orientation="right"
+              axisLine={false}
+              tickLine={false}
+              tick={{
+                fontSize: 12,
+                fill: '#616D8D',
+              }}
+            />
+            <Legend
+              height={26}
+              content={(props) => (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 8,
+                    paddingTop: 12,
+                  }}
+                >
+                  {props.payload &&
+                    props.payload.map((entry) => (
+                      <React.Fragment key={`legend-${entry.value}`}>
+                        <span
+                          style={{
+                            display: 'block',
+                            width: 12,
+                            height: 12,
+                            backgroundColor: entry.color,
+                            borderRadius: '2px',
+                          }}
+                        ></span>
+                        <span
+                          style={{
+                            color: '#616D8D',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {entry.value}
+                        </span>
+                      </React.Fragment>
+                    ))}
+                </div>
+              )}
+            />
+            <Brush
+              dataKey="date"
+              height={24}
+              stroke="#1C64F2"
+              fill="#222B44"
+              endIndex={Math.min(20, chartData.length - 1)}
             >
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="date" stroke="#8884d8" />
-            </LineChart> */}
-            <AreaChart>
-              <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis />
-              <Area
-                type="monotone"
-                dataKey={data.profile.email}
-                stroke="#1C64F2"
-                fill="rgba(28, 100, 242, 0.2)"
-              />
-            </AreaChart>
-          </Brush>
-          <CartesianGrid stroke="#222b44" strokeWidth={1} vertical={false} />
-
-          <XAxis
-            dataKey="date"
-            // dataKey="name"
-            axisLine={false}
-            tickLine={false}
-            height={20}
-            tick={{
-              fontSize: 12,
-              fill: '#616D8D',
-            }}
-            label={
-              {
-                // position: 'insideTop',
-                // value: 'Метка X',
-                // position: 'insideTop',
-                // fontSize: 14,
-                // fill: '#616D8D',
-              }
-            }
-          />
-          <YAxis
-            orientation="right"
-            axisLine={false}
-            tickLine={false}
-            tick={{
-              fontSize: 12,
-              fill: '#616D8D',
-            }}
-          />
-          {/* <Tooltip
-            labelFormatter={(value, entry) => `Дата: ${value} Время: ${entry}`}
-          /> */}
-          <Legend
-            content={(props) => (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 8,
-                }}
+              <LineChart
+                width={343}
+                height={320}
+                data={chartData}
+                margin={{ top: 20, right: 30, bottom: 20, left: 30 }}
               >
-                {props.payload &&
-                  props.payload.map((entry) => (
-                    <React.Fragment key={`legend-${entry.value}`}>
-                      <span
-                        style={{
-                          display: 'block',
-                          width: 12,
-                          height: 12,
-                          backgroundColor: entry.color,
-                          borderRadius: '2px',
-                        }}
-                      ></span>
-                      <span
-                        style={{
-                          color: '#616D8D',
-                          fontSize: '14px',
-                          fontWeight: 500,
-                        }}
-                      >
-                        {entry.value}
-                      </span>
-                    </React.Fragment>
-                  ))}
-              </div>
-            )}
-          />
-          {/* <Tooltip content={(props) => <CustomTooltip {...props} />} /> */}
-          <Tooltip content={renderTooltipContent} />
-          <Area
-            dataKey={data.profile.email}
-            stroke="#1C64F2"
-            fill="rgba(28, 100, 242, 0.2)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+                <CartesianGrid
+                  stroke="#222b44"
+                  strokeWidth={1}
+                  vertical={false}
+                />
+                <Line
+                  dataKey={data.profile.email}
+                  stroke="#616D8D"
+                  dot={false}
+                  fill="rgba(28, 100, 242, 0.2)"
+                />
+              </LineChart>
+            </Brush>
+            <Tooltip content={renderTooltipContent} />
+            <Area
+              dataKey={data.profile.email}
+              stroke="#1C64F2"
+              fill="rgba(28, 100, 242, 0.2)"
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
     </>
   );
 };
