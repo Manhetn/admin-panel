@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IUserTransactions } from '@interfaces';
+import { getFormatedDateFull, getformatedNumber } from '@utils';
 import './styles.scss';
 
 interface IUserTransactionsTableProps {
@@ -10,6 +11,7 @@ interface IUserTransactionsTableProps {
 const UserTransactionsTable: React.FC<IUserTransactionsTableProps> = ({
   data,
 }) => {
+  console.log(data);
   return (
     <table className="table table_stabel">
       <thead className="table__thead">
@@ -22,9 +24,22 @@ const UserTransactionsTable: React.FC<IUserTransactionsTableProps> = ({
       <tbody className="table__tbody">
         {data.map((transaction, index) => (
           <tr key={index} className="table__row">
-            <td className="table__cell">{transaction.type}</td>
-            <td className="table__cell">{transaction.amount}</td>
-            <td className="table__cell">{transaction.created_at}</td>
+            <td className="table__cell">
+              {transaction.type === 'WRITE_OFF' ? 'Списание' : 'Пополнение'}
+            </td>
+            <td
+              className={`table__cell ${
+                transaction.type === 'WRITE_OFF'
+                  ? 'table__cell_red-text'
+                  : 'table__cell_green-text'
+              }`}
+            >
+              {transaction.type === 'WRITE_OFF' ? '-' : '+'}
+              {getformatedNumber(transaction.amount)} BTKN
+            </td>
+            <td className="table__cell">
+              {getFormatedDateFull(transaction.created_at)}
+            </td>
           </tr>
         ))}
       </tbody>

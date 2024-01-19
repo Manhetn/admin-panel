@@ -75,6 +75,14 @@
     border-bottom: 1px solid $color-blue-tertiary;
     color: $color-white;
 
+    &_red-text {
+      color: $color-red-main;
+    }
+
+    &_green-text {
+      color: $color-green-main;
+    }
+
     &_with-button {
       width: 100%;
       display: flex;
