@@ -3,6 +3,7 @@ import {
   IUserSubscriptionData,
   IUserPlanData,
   IUserTransactions,
+  ISelectedUser,
 } from './user';
 import { IChartItem, IChartItem2 } from './chart';
 
@@ -13,4 +14,5 @@ export type {
   IUserTransactions,
   IChartItem,
   IChartItem2,
+  ISelectedUser,
 };

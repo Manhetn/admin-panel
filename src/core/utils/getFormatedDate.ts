@@ -1,27 +1,12 @@
-const monthNames = [
-  'Янв',
-  'Фев',
-  'Мар',
-  'Фпр',
-  'Май',
-  'Июн',
-  'Июл',
-  'Фвг',
-  'Сен',
-  'Окт',
-  'Ноя',
-  'Дек',
-];
+const getFormatedDate = (date: string): string => {
+  const dateObject = new Date(date);
+  const day = dateObject.getDate().toString().padStart(2, '0');
+  const month = (dateObject.getMonth() + 1).toString().padStart(2, '0');
+  const year = dateObject.getFullYear();
+  const hours = dateObject.getHours().toString().padStart(2, '0');
+  const minutes = dateObject.getMinutes().toString().padStart(2, '0');
 
-function getFormatedDate(date: string): string {
-  const inputDate = new Date(date);
-
-  // return `${inputDate.getDate()} ${
-  //   monthNames[inputDate.getMonth()]
-  // } ${inputDate.getFullYear()} ${inputDate.getHours()}:${inputDate.getMinutes()}`;
-  return `${inputDate.getDate()} ${
-    monthNames[inputDate.getMonth()]
-  } ${inputDate.getFullYear()}`;
-}
+  return `${day} ${month} ${year} ${hours}:${minutes}`;
+};
 
 export default getFormatedDate;

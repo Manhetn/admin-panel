@@ -21,6 +21,7 @@ export default defineConfig({
       '@services': 'src/core/services/index.ts',
       '@configs': 'src/core/configs/index.ts',
       '@utils': 'src/core/utils/index.ts',
+      '@consts': 'src/core/consts/index.ts'
     },
   },
 });
