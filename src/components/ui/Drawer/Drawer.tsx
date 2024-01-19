@@ -25,9 +25,7 @@ const Drawer: React.FC<IExpenseChartDrawerProps> = ({
           <IconCross />
         </button>
       </div>
-      <div className="drawer__content">
-        <div>{children}</div>
-      </div>
+      <div className="drawer__content">{children}</div>
     </div>
   );
 };

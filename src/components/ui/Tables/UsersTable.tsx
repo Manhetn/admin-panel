@@ -28,33 +28,31 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
     : data;
 
   return (
-    <table className="user-table">
-      <thead>
-        <tr>
-          <th className="user-table__header-cell">Email</th>
-          <th className="user-table__header-cell">Имя</th>
-          <th className="user-table__header-cell">Роль</th>
-          <th className="user-table__header-cell">Подписка</th>
-          <th className="user-table__header-cell user-table__cell_with-button">
+    <table className="table">
+      <thead className="table__thead">
+        <tr className="table__tr">
+          <th className="table__header-cell">Email</th>
+          <th className="table__header-cell">Имя</th>
+          <th className="table__header-cell">Роль</th>
+          <th className="table__header-cell">Подписка</th>
+          <th className="table__header-cell table__cell_with-button">
             Токены
             <button className="button-icon" type="button" onClick={handleSort}>
               {sortOrder === 'desc' ? (
-                <IconArrowDown stylesClass="user-table__icon-sort" size={18} />
+                <IconArrowDown stylesClass="table__icon-sort" size={18} />
               ) : (
-                <IconArrowUp stylesClass="user-table__icon-sort" size={18} />
+                <IconArrowUp stylesClass="table__icon-sort" size={18} />
               )}
             </button>
           </th>
-          <th className="user-table__header-cell">Действия</th>
+          <th className="table__header-cell">Действия</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="table__tbody">
         {sortedData.map((user, index) => (
-          <tr key={index} className="user-table__row">
-            <td className="user-table__cell user-table__cell_email">
-              {user.email}
-            </td>
-            <td className="user-table__cell">
+          <tr key={index} className="table__row">
+            <td className="table__cell table__cell_email">{user.email}</td>
+            <td className="table__cell">
               <button
                 className="button-text"
                 onClick={() => handleClickUser(user)}
@@ -62,26 +60,23 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
                 {user.name}
               </button>
             </td>
-            <td className="user-table__cell">{user.role}</td>
-            <td className="user-table__cell">{user.subscription.plan.type}</td>
-            <td className="user-table__cell">{user.subscription.tokens} TKN</td>
-            <td className="user-table__cell user-table__cell_with-button">
+            <td className="table__cell">{user.role}</td>
+            <td className="table__cell">{user.subscription.plan.type}</td>
+            <td className="table__cell">{user.subscription.tokens} TKN</td>
+            <td className="table__cell table__cell_with-button">
               <button
                 className="button-icon"
                 type="button"
                 onClick={() => console.log('click edit')}
               >
-                <IconEdit stylesClass="user-table__icon-actions" size={18} />
+                <IconEdit stylesClass="table__icon-actions" size={18} />
               </button>
               <button
                 className="button-icon"
                 type="button"
                 onClick={() => console.log('click trash')}
               >
-                <IconTrashCan
-                  stylesClass="user-table__icon-actions"
-                  size={18}
-                />
+                <IconTrashCan stylesClass="table__icon-actions" size={18} />
               </button>
             </td>
           </tr>
