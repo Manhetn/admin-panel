@@ -1,8 +1,31 @@
-Задача:
-Реализовать первый экран пользовательского интерфейса панели администратора, который будет отображать список пользователей с функциями поиска в таблице и сортировки по количеству токенов. По нажатию на пользователя должен отображаться всплывающий боковой элемент (drawer) с графиком расходов за последние 24 часа и перечнем транзакций данного пользователя.
+## Admin panel:
 
-Figma: https://www.figma.com/file/XqFgvsYqbStEQHQbTozc1t/TestBit-case?type=design&node-id=780-25430&mode=design&t=nMw4OF5vs5imbcHp-0
-Api swagger: https://test.gefara.xyz/api/v1/swagger/
+**Description:**
 
+- Реализовать первый экран пользовательского интерфейса панели администратора, который будет отображать список пользователей с функциями поиска в таблице и сортировки по количеству токенов. По нажатию на пользователя должен отображаться всплывающий боковой элемент (drawer) с графиком расходов за последние 24 часа и перечнем транзакций данного пользователя.
 
-https://test.gefara.xyz/api/v1/user/list
+# Installation:
+
+_node.js and npm must be installed to work with the project_
+
+Copy the project to your computer:
+
+```
+
+```
+
+Install Dependencies:
+
+```
+npm install
+```
+
+# Working with a project:
+
+**_Development mode with server startup:_**:
+
+### `npm run dev`
+
+**_Finished build for production:_**:
+
+### `npm run build`
