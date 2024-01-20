@@ -73,26 +73,31 @@ const AdminPage: React.FC = () => {
   return (
     <>
       <BaseAdminLayout>
-        {isLoading && <></>}
         <h1 className="admin-page__title">Моя организация</h1>
         <h2 className="admin-page__subtitle">Пользователи</h2>
         <div className="admin-page__search-block">
           <SearchInput value={search} handleChange={setSearch} />
         </div>
-        <div className="admin-page__table">
-          <UserTable
-            data={currentUsers}
-            handleClickUser={(userData) => handleShowUserDetails(userData)}
-          />
-        </div>
+        {isLoading ? (
+          <h3 className="admin-page__loading">Загрузка...</h3>
+        ) : (
+          <>
+            <div className="admin-page__table">
+              <UserTable
+                data={currentUsers}
+                handleClickUser={(userData) => handleShowUserDetails(userData)}
+              />
+            </div>
 
-        {totalPages !== 0 && (
-          <div className="admin-page__pagination">
-            <Pagination
-              totalPages={totalPages}
-              handlePageChange={() => handlePageChange}
-            />
-          </div>
+            {totalPages !== 0 && (
+              <div className="admin-page__pagination">
+                <Pagination
+                  totalPages={totalPages}
+                  handlePageChange={() => handlePageChange}
+                />
+              </div>
+            )}
+          </>
         )}
       </BaseAdminLayout>
 
@@ -105,13 +110,23 @@ const AdminPage: React.FC = () => {
           title="testmail@gmail.com"
           handleClose={() => setUsersDetailsDrawer(false)}
         >
-          <h3 className="admin-page__drawer-title">Использование токенов</h3>
-          {selectedUser && <Chart data={selectedUser} />}
-          <h4 className="admin-page__drawer-table-title">История операций</h4>
-          {selectedUser && (
-            <div className="admin-page__drawer-table">
-              <UserTransactionsTable data={selectedUser.transactions} />
-            </div>
+          {isLoading ? (
+            <h3 className="admin-page__loading">Загрузка...</h3>
+          ) : (
+            <>
+              <h3 className="admin-page__drawer-title">
+                Использование токенов
+              </h3>
+              {selectedUser && <Chart data={selectedUser} />}
+              <h4 className="admin-page__drawer-table-title">
+                История операций
+              </h4>
+              {selectedUser && (
+                <div className="admin-page__drawer-table">
+                  <UserTransactionsTable data={selectedUser.transactions} />
+                </div>
+              )}
+            </>
           )}
         </Drawer>
       </Backdrop>

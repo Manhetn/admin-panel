@@ -57,7 +57,14 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
           <tbody className="table__tbody">
             {sortedData.map((user, index) => (
               <tr key={index} className="table__row">
-                <td className="table__cell table__cell_email">{user.email}</td>
+                <td className="table__cell table__cell_email">
+                  <button
+                    className="button-text"
+                    onClick={() => handleClickUser(user)}
+                  >
+                    {user.email}
+                  </button>
+                </td>
                 <td className="table__cell">
                   <button
                     className="button-text"

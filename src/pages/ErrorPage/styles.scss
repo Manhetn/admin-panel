@@ -16,8 +16,7 @@
     align-items: center;
   }
 
-  &__title,
-  &__subtitle {
+  &__title {
     color: $color-red;
     font-size: 18px;
     font-weight: 600;
@@ -45,11 +44,5 @@
   &__link {
     text-transform: uppercase;
     font-weight: 600;
-  }
-
-  @include small-devices {
-  }
-
-  @include medium-devices {
   }
 }

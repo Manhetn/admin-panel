@@ -135,4 +135,13 @@
       padding-top: 20px;
     }
   }
+
+  &__loading {
+    padding: 62px;
+    text-align: center;
+    color: $color-gray-bluish;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+  }
 }
