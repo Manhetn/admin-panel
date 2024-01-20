@@ -18,8 +18,12 @@ npm install
 
 **_Development mode with server startup:_**:
 
-### `npm run dev`
+```
+npm run dev
+```
 
 **_Finished build for production:_**:
 
-### `npm run build`
+```
+`npm run build`
+```
