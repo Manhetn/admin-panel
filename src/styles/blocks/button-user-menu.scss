@@ -5,11 +5,11 @@
   padding: 8px 14px;
   background-color: transparent;
   border-radius: 6px;
-  border: 1px solid $color-blue-tertiary;
+  border: 1px solid $color-gray-currant;
 
   &__icon {
-    color: $color-white-main;
-    background-color: $color-blue-secondary;
+    color: $color-white;
+    background-color: $color-blue-slate;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -21,7 +21,7 @@
   }
 
   &__info-text {
-    color: $color-blue-gray;
+    color: $color-gray-bluish;
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;

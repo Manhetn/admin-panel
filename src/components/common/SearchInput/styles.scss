@@ -12,14 +12,14 @@
     width: 100%;
     padding: 14px 16px 14px 42px;
     background-color: transparent;
-    border: 1px solid $color-blue-gray;
+    border: 1px solid $color-gray-bluish;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
 
     &::placeholder {
-      color: $color-blue-gray;
+      color: $color-gray-bluish;
     }
   }
 
@@ -27,6 +27,6 @@
     position: absolute;
     left: 18px;
     z-index: -1;
-    color: $color-blue-gray;
+    color: $color-gray-bluish;
   }
 }

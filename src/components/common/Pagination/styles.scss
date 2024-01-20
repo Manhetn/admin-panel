@@ -22,7 +22,7 @@
     border-radius: 8px;
 
     &_active {
-      background-color: $color-blue-main;
+      background-color: $color-blue-bright;
     }
   }
 
@@ -59,6 +59,6 @@
   }
 
   &__icon {
-    color: $color-blue-gray;
+    color: $color-gray-bluish
   }
 }

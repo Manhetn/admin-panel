@@ -8,8 +8,8 @@
   font-style: normal;
 
   color-scheme: dark;
-  color: $color-white-main;
-  background-color: $color-black-main;
+  color: $color-white;
+  background-color: $color-blue-purple-dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,12 +17,12 @@
 }
 
 a {
-  color: $color-blue-main;
+  color: $color-blue-bright;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: $color-blue-primary;
+  color: $color-blue-sky;
 }
 
 body {

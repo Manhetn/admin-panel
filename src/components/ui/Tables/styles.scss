@@ -16,8 +16,8 @@
 
   &__header-cell {
     padding: 14px 34.5px;
-    background-color: $color-black-primary;
-    color: $color-gray-main;
+    background-color: $color-blue-purple-dark;
+    color: $color-gray;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -39,15 +39,15 @@
     min-height: 64px;
     padding: 24px 20px;
     border-width: 0;
-    border-bottom: 1px solid $color-blue-tertiary;
+    border-bottom: 1px solid $color-gray-currant;
     color: $color-white;
 
     &_red-text {
-      color: $color-red-main;
+      color: $color-red;
     }
 
     &_green-text {
-      color: $color-green-main;
+      color: $color-green;
     }
 
     &_with-button {
@@ -68,11 +68,11 @@
   }
 
   &__icon-actions {
-    color: $color-blue-main;
+    color: $color-blue-bright;
   }
 
   &__icon-sort {
-    color: $color-blue-gray;
+    color: $color-gray-bluish;
   }
 
   &__empty-block {
@@ -81,7 +81,7 @@
 
   &__empty-text {
     text-align: center;
-    color: $color-blue-gray;
+    color: $color-gray-bluish;
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
