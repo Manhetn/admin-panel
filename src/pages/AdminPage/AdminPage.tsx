@@ -10,15 +10,9 @@ import {
 } from 'src/core/store/slice/usersSlice';
 import useAppSelector from 'src/core/hooks/useAppSelector';
 import { IUserData } from '@interfaces';
-import {
-  Chart,
-  Drawer,
-  Pagination,
-  UserTable,
-  UserTransactionsTable,
-} from '@ui';
+import { Chart, UserTable, UserTransactionsTable } from '@ui';
 import { BaseAdminLayout } from '@layouts';
-import { Backdrop, SearchInput } from '@common';
+import { Backdrop, SearchInput, Drawer, Pagination } from '@common';
 import './styles.scss';
 
 const AdminPage: React.FC = () => {
