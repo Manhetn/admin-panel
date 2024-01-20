@@ -107,4 +107,16 @@
   &__icon-sort {
     color: $color-blue-gray;
   }
+
+  &__empty-block {
+    padding: 48px;
+  }
+
+  &__empty-text {
+    text-align: center;
+    color: $color-blue-gray;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
 }
