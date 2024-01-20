@@ -29,8 +29,8 @@ const AdminPage: React.FC = () => {
 
   const [search, setSearch] = useState('');
   const [totalPages, setTotalPages] = useState(0);
+  // const [visibleCurrentUsers]
   const [currentUsers, setCurrentUsers] = useState<IUserData[]>([]);
-  console.log(selectedUser);
 
   const [showUsersDetailsDrawer, setUsersDetailsDrawer] = useState(false);
 
@@ -88,17 +88,13 @@ const AdminPage: React.FC = () => {
           <SearchInput value={search} handleChange={setSearch} />
         </div>
         <div className="admin-page__table">
-          {currentUsers ? (
-            <UserTable
-              data={currentUsers}
-              handleClickUser={(userData) => handleShowUserDetails(userData)}
-            />
-          ) : (
-            <></>
-          )}
+          <UserTable
+            data={currentUsers}
+            handleClickUser={(userData) => handleShowUserDetails(userData)}
+          />
         </div>
 
-        {usersList && usersList.length > 10 && (
+        {totalPages !== 0 && (
           <div className="admin-page__pagination">
             <Pagination
               totalPages={totalPages}
@@ -118,14 +114,12 @@ const AdminPage: React.FC = () => {
           handleClose={() => setUsersDetailsDrawer(false)}
         >
           <h3 className="admin-page__drawer-title">Использование токенов</h3>
-          {selectedUser ? <Chart data={selectedUser} /> : <></>}
+          {selectedUser && <Chart data={selectedUser} />}
           <h4 className="admin-page__drawer-table-title">История операций</h4>
-          {selectedUser ? (
+          {selectedUser && (
             <div className="admin-page__drawer-table">
               <UserTransactionsTable data={selectedUser.transactions} />
             </div>
-          ) : (
-            <></>
           )}
         </Drawer>
       </Backdrop>
