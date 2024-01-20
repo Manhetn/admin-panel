@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+
 import './styles.scss';
 
 interface IBackdropProps extends PropsWithChildren {

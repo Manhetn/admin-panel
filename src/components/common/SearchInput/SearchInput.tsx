@@ -1,6 +1,7 @@
 import React from 'react';
-import './styles.scss';
+
 import { IconSearch } from '@icons';
+import './styles.scss';
 
 interface ISearchInput {
   value: string;
