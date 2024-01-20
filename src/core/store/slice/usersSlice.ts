@@ -1,20 +1,11 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import { AxiosError } from 'axios';
-
+import { AxiosError } from 'axios';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import { AppDispatch, RootState } from '../store';
 import { HttpService } from '@services';
 import { API_CONFIG } from '@configs';
 import { IUserData, IUserTransactions } from '@interfaces';
-import { AxiosError } from 'axios';
 import { ISelectedUser } from 'src/core/interfaces/user';
-
-// import { IErrorObject } from '../models/errors';
-// import { AppDispatch, RootState } from './store';
-// // import authService from '../services/auth.service';
-// // import userService from '../services/user.servece';
-// // import localStorageService from '../services/localStorage.service';
-// // import history from '../utils/hystory';
 
 interface IUsersState {
   isLoading: boolean;
@@ -107,7 +98,7 @@ export const loadUserTransactions =
           transactions: data,
         })
       );
-      // dispatch(usersSetUserTransactions(data));
+
       dispatch(usersRequestedSuccess());
     } catch (error) {
       const err = error as AxiosError;
