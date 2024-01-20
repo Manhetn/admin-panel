@@ -21,7 +21,6 @@
   }
 
   &__content {
-    // width: 100%;
     display: flex;
 
     @include small-devices {
@@ -39,7 +38,6 @@
     flex-grow: 1;
 
     @include small-devices {
-      // flex-grow: 0;
       gap: 44px;
       flex: 0 0 auto;
     }

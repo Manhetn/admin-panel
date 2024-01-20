@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { IUserData } from '@interfaces';
-import './styles.scss';
 import { IconArrowDown, IconArrowUp, IconEdit, IconTrashCan } from '@icons';
+import './styles.scss';
 
 interface IUserTableProps {
   data: IUserData[];

@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
-import './styles.scss';
+
 import { IconCross } from '@icons';
+import './styles.scss';
 
 interface IExpenseChartDrawerProps extends PropsWithChildren {
   isOpen: boolean;

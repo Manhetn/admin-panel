@@ -12,9 +12,10 @@ import {
   Line,
   LineChart,
 } from 'recharts';
-import { getModifiedDataForChart } from '@utils';
-import { MONTHS } from '@consts';
+
 import { ISelectedUser } from '@interfaces';
+import { MONTHS } from '@consts';
+import { getModifiedDataForChart } from '@utils';
 import './styles.scss';
 
 interface IChartProps {
