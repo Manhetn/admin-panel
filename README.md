@@ -8,12 +8,6 @@
 
 _node.js and npm must be installed to work with the project_
 
-Copy the project to your computer:
-
-```
-git@github.com:Manhetn/admin-panel.git
-```
-
 Install Dependencies:
 
 ```
