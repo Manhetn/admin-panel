@@ -4,43 +4,10 @@
 .table {
   $this: &;
 
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
   border-spacing: 0;
-
-  &_stabel {
-    #{$this}__cell {
-      min-width: 0;
-      width: 33.3%;
-    }
-  }
-
-  &__thead {
-    width: 100%;
-    flex-shrink: 0;
-  }
-
-  &__tbody {
-    flex: 1;
-    overflow: auto;
-  }
-
-  &__tr {
-    display: flex;
-  }
-
-  &__row {
-    flex: 1;
-  }
 
   &__header-cell,
   &__cell {
-    flex-grow: 1;
-    text-align: center;
-
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -118,5 +85,44 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
+  }
+
+  &_flex {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    #{$this}__thead {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    #{$this}__tbody {
+      flex: 1;
+      overflow: auto;
+    }
+
+    #{$this}__tr {
+      display: flex;
+    }
+
+    #{$this}__row {
+      flex: 1;
+    }
+
+    #{$this}__header-cell,
+    #{$this}__cell {
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+
+  &_three-columns {
+    #{$this}__cell {
+      min-width: 0;
+      width: 33.3%;
+    }
   }
 }

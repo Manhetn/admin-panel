@@ -13,7 +13,7 @@ const UserTransactionsTable: React.FC<IUserTransactionsTableProps> = ({
 }) => {
   console.log(data);
   return (
-    <table className="table table_stabel">
+    <table className="table table_flex table_three-columns">
       <thead className="table__thead">
         <tr className="table__tr">
           <th className="table__header-cell">Тип</th>
