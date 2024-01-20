@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
+import { IPaginationSelectedPage } from '@interfaces';
 import { IconPaginationArrowLeft, IconPaginationArrowRight } from '@icons';
 import './styles.scss';
 
 interface IPaginationProps {
   totalPages: number;
-  handlePageChange: () => void;
+  handlePageChange: (value: IPaginationSelectedPage) => void;
 }
 
 const Pagination: React.FC<IPaginationProps> = ({
@@ -21,7 +22,7 @@ const Pagination: React.FC<IPaginationProps> = ({
       pageCount={totalPages}
       marginPagesDisplayed={1}
       pageRangeDisplayed={4}
-      onPageChange={handlePageChange}
+      onPageChange={(selectedPage) => handlePageChange(selectedPage)}
       containerClassName={'pagination'}
       pageClassName={'pagination__page'}
       pageLinkClassName={'pagination__button'}

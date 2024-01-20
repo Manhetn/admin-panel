@@ -32,6 +32,7 @@
 
     &.disabled {
       opacity: 0.4;
+      cursor: default;
     }
   }
 
@@ -59,6 +60,6 @@
   }
 
   &__icon {
-    color: $color-gray-bluish
+    color: $color-gray-bluish;
   }
 }

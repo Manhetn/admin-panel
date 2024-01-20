@@ -6,6 +6,7 @@ import {
   ISelectedUser,
 } from './user';
 import { IChartItem } from './chart';
+import { IPaginationSelectedPage } from './pagination';
 
 export type {
   IUserData,
@@ -14,4 +15,5 @@ export type {
   IUserTransactions,
   IChartItem,
   ISelectedUser,
+  IPaginationSelectedPage,
 };

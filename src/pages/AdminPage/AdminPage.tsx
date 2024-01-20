@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { IUserData } from '@interfaces';
+import { IPaginationSelectedPage, IUserData } from '@interfaces';
 import {
   getSelectedUser,
   getUsersList,
@@ -30,7 +30,7 @@ const AdminPage: React.FC = () => {
     typeof setTimeout
   > | null>(null);
 
-  const handlePageChange = (selectedPage: { selected: number }) => {
+  const handlePageChange = (selectedPage: IPaginationSelectedPage) => {
     const startIndex = selectedPage.selected * 10;
     const endIndex = startIndex + 10;
     setCurrentUsers(usersList!.slice(startIndex, endIndex));
@@ -93,7 +93,7 @@ const AdminPage: React.FC = () => {
               <div className="admin-page__pagination">
                 <Pagination
                   totalPages={totalPages}
-                  handlePageChange={() => handlePageChange}
+                  handlePageChange={handlePageChange}
                 />
               </div>
             )}
