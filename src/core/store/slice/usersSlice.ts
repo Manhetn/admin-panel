@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from '../store';
 import { HttpService } from '@services';
 import { API_CONFIG } from '@configs';
 import { IUserData, IUserTransactions } from '@interfaces';
-import { ISelectedUser } from 'src/core/interfaces/user';
+import { ISelectedUser } from '@interfaces';
 
 interface IUsersState {
   isLoading: boolean;

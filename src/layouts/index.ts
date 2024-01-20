@@ -1,3 +1,3 @@
-import BaseAdminLayout from './BaseAdminLayout/BaseAdminLayout';
+import BaseAdminLayout from './BaseAdminLayout';
 
 export { BaseAdminLayout };

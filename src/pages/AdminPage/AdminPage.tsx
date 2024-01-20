@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 
-import useAppDispatch from 'src/core/hooks/useAppDispatch';
+import { IUserData } from '@interfaces';
 import {
   getSelectedUser,
   getUsersList,
   isUsersLoading,
   loadUserTransactions,
   loadUsers,
-} from 'src/core/store/slice/usersSlice';
-import useAppSelector from 'src/core/hooks/useAppSelector';
-import { IUserData } from '@interfaces';
-import { Chart, UserTable, UserTransactionsTable } from '@ui';
+} from '@store';
+import { useAppDispatch, useAppSelector } from '@hooks';
 import { BaseAdminLayout } from '@layouts';
 import { Backdrop, SearchInput, Drawer, Pagination } from '@common';
+import { Chart, UserTable, UserTransactionsTable } from '@ui';
 import './styles.scss';
 
 const AdminPage: React.FC = () => {
@@ -23,7 +22,6 @@ const AdminPage: React.FC = () => {
 
   const [search, setSearch] = useState('');
   const [totalPages, setTotalPages] = useState(0);
-  // const [visibleCurrentUsers]
   const [currentUsers, setCurrentUsers] = useState<IUserData[]>([]);
 
   const [showUsersDetailsDrawer, setUsersDetailsDrawer] = useState(false);

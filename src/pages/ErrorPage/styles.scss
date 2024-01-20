@@ -1,0 +1,55 @@
+@import '@mixins';
+@import '@variables';
+
+.error-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__contant {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__title,
+  &__subtitle {
+    color: $color-red-main;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+
+    @include small-devices {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    @include medium-devices {
+      font-size: 22px;
+      line-height: 29px;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    color: $color-blue-gray;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  @include small-devices {
+  }
+
+  @include medium-devices {
+  }
+}
