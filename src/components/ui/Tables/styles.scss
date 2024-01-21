@@ -36,6 +36,14 @@
     }
   }
 
+  &__cell-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
   &__cell {
     min-width: 93px;
     min-height: 64px;
@@ -50,14 +58,6 @@
 
     &_green-text {
       color: $color-green;
-    }
-
-    &_with-button {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
     }
 
     &_email {

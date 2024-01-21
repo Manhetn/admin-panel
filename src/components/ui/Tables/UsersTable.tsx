@@ -76,21 +76,26 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
                 <td className="table__cell">{user.role}</td>
                 <td className="table__cell">{user.subscription.plan.type}</td>
                 <td className="table__cell">{user.subscription.tokens} TKN</td>
-                <td className="table__cell table__cell_with-button">
-                  <button
-                    className="button-icon"
-                    type="button"
-                    onClick={() => console.log('click edit')}
-                  >
-                    <IconEdit stylesClass="table__icon-actions" size={18} />
-                  </button>
-                  <button
-                    className="button-icon"
-                    type="button"
-                    onClick={() => console.log('click trash')}
-                  >
-                    <IconTrashCan stylesClass="table__icon-actions" size={18} />
-                  </button>
+                <td className="table__cell">
+                  <span className="table__cell-buttons">
+                    <button
+                      className="button-icon"
+                      type="button"
+                      onClick={() => console.log('click edit')}
+                    >
+                      <IconEdit stylesClass="table__icon-actions" size={18} />
+                    </button>
+                    <button
+                      className="button-icon"
+                      type="button"
+                      onClick={() => console.log('click trash')}
+                    >
+                      <IconTrashCan
+                        stylesClass="table__icon-actions"
+                        size={18}
+                      />
+                    </button>
+                  </span>
                 </td>
               </tr>
             ))}
