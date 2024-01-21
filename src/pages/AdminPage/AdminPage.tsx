@@ -13,6 +13,7 @@ import { BaseAdminLayout } from '@layouts';
 import { Backdrop, SearchInput, Drawer, Pagination } from '@common';
 import { Chart, UserTable, UserTransactionsTable } from '@ui';
 import './styles.scss';
+import { toggleBodyScroll } from '@utils';
 
 const AdminPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ const AdminPage: React.FC = () => {
   const handleShowUserDetails = (userData: IUserData) => {
     dispatch(loadUserTransactions(userData));
     setUsersDetailsDrawer(true);
+    toggleBodyScroll(true);
   };
 
   useEffect(() => {
@@ -103,12 +105,18 @@ const AdminPage: React.FC = () => {
 
       <Backdrop
         isShow={showUsersDetailsDrawer}
-        onClickHendler={() => setUsersDetailsDrawer(false)}
+        onClickHendler={() => {
+          setUsersDetailsDrawer(false);
+          toggleBodyScroll(false);
+        }}
       >
         <Drawer
           isOpen={showUsersDetailsDrawer}
           title="testmail@gmail.com"
-          handleClose={() => setUsersDetailsDrawer(false)}
+          handleClose={() => {
+            setUsersDetailsDrawer(false);
+            toggleBodyScroll(false);
+          }}
         >
           {isLoading ? (
             <h3 className="admin-page__loading">Загрузка...</h3>
