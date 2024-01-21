@@ -24,6 +24,7 @@ export default defineConfig({
       '@consts': 'src/core/consts/index.ts',
       '@store': 'src/core/store/index.ts',
       '@hooks': 'src/core/hooks/index.ts',
+      '@types': 'src/core/types/index.ts',
     },
   },
 });

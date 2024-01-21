@@ -3,29 +3,27 @@ import React, { useState } from 'react';
 import { IUserData } from '@interfaces';
 import { IconArrowDown, IconArrowUp, IconEdit, IconTrashCan } from '@icons';
 import './styles.scss';
+import { TSortOrder } from '@types';
 
 interface IUserTableProps {
   data: IUserData[];
   handleClickUser: (userData: IUserData) => void;
+  handleSortUser: (sortOrder: TSortOrder) => void;
 }
 
-const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-  const [isSorted, setIsSorted] = useState(false);
+const UserTable: React.FC<IUserTableProps> = ({
+  data,
+  handleClickUser,
+  handleSortUser,
+}) => {
+  const [sortOrder, setSortOrder] = useState<TSortOrder>('desc');
 
-  const handleSort = () => {
-    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    setIsSorted(true);
+  const handleClickSort = () => {
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+
+    setSortOrder(newSortOrder);
+    handleSortUser(newSortOrder);
   };
-
-  const sortedData = isSorted
-    ? [...data].sort((a, b) => {
-        const aValue = a.subscription.tokens;
-        const bValue = b.subscription.tokens;
-
-        return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
-      })
-    : data;
 
   return (
     <>
@@ -41,7 +39,7 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
               <button
                 className="button-icon"
                 type="button"
-                onClick={handleSort}
+                onClick={handleClickSort}
               >
                 {sortOrder === 'desc' ? (
                   <IconArrowDown stylesClass="table__icon-sort" size={18} />
@@ -55,7 +53,7 @@ const UserTable: React.FC<IUserTableProps> = ({ data, handleClickUser }) => {
         </thead>
         {data.length > 0 && (
           <tbody className="table__tbody">
-            {sortedData.map((user, index) => (
+            {data.map((user, index) => (
               <tr key={index} className="table__row">
                 <td className="table__cell table__cell_email">
                   <button

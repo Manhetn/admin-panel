@@ -6,16 +6,19 @@ import { IconPaginationArrowLeft, IconPaginationArrowRight } from '@icons';
 import './styles.scss';
 
 interface IPaginationProps {
+  currentPage: number;
   totalPages: number;
   handlePageChange: (value: IPaginationSelectedPage) => void;
 }
 
 const Pagination: React.FC<IPaginationProps> = ({
+  currentPage,
   totalPages,
   handlePageChange,
 }) => {
   return (
     <ReactPaginate
+      forcePage={currentPage}
       previousLabel={<IconPaginationArrowLeft stylesClass="pagination__icon" />}
       nextLabel={<IconPaginationArrowRight stylesClass="pagination__icon" />}
       breakLabel={'....'}

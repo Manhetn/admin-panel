@@ -14,6 +14,7 @@ import { Backdrop, SearchInput, Drawer, Pagination } from '@common';
 import { Chart, UserTable, UserTransactionsTable } from '@ui';
 import './styles.scss';
 import { toggleBodyScroll } from '@utils';
+import { TSortOrder } from '@types';
 
 const AdminPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +23,9 @@ const AdminPage: React.FC = () => {
   const isLoading = useAppSelector(isUsersLoading());
 
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [users, setUsers] = useState<IUserData[]>([]);
   const [currentUsers, setCurrentUsers] = useState<IUserData[]>([]);
 
   const [showUsersDetailsDrawer, setUsersDetailsDrawer] = useState(false);
@@ -31,10 +34,38 @@ const AdminPage: React.FC = () => {
     typeof setTimeout
   > | null>(null);
 
+  const getSortedUsers = (sortOrder: TSortOrder): IUserData[] => {
+    return [...users].sort((a, b) => {
+      const aValue = a.subscription.tokens;
+      const bValue = b.subscription.tokens;
+
+      return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
+    });
+  };
+
+  const getFilteredUsers = (users: IUserData[]): IUserData[] => {
+    return users.filter((user) =>
+      user.name.toLowerCase().includes(search.toLowerCase())
+    );
+  };
+
+  const handleSortUsers = (sortOrder: TSortOrder) => {
+    let sortedUsers = getSortedUsers(sortOrder);
+
+    if (search.length) {
+      sortedUsers = getFilteredUsers(sortedUsers);
+    }
+
+    setUsers(sortedUsers);
+  };
+
   const handlePageChange = (selectedPage: IPaginationSelectedPage) => {
-    const startIndex = selectedPage.selected * 10;
+    const { selected } = selectedPage;
+    const startIndex = selected * 10;
     const endIndex = startIndex + 10;
-    setCurrentUsers(usersList!.slice(startIndex, endIndex));
+
+    setCurrentPage(selected);
+    setCurrentUsers(users!.slice(startIndex, endIndex));
   };
 
   const handleShowUserDetails = (userData: IUserData) => {
@@ -50,21 +81,30 @@ const AdminPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (usersList && usersList.length > 10) {
-      setTotalPages(Math.ceil(usersList.length / 10));
-      setCurrentUsers(usersList.slice(0, 10));
+    if (usersList) {
+      setUsers(usersList);
+    } else {
+      setUsers([]);
     }
   }, [usersList]);
+
+  useEffect(() => {
+    if (users.length > 10) {
+      setTotalPages(Math.ceil(users.length / 10));
+      setCurrentUsers(users.slice(0, 10));
+    } else {
+      setCurrentUsers(users);
+    }
+    setCurrentPage(0);
+  }, [users]);
 
   useEffect(() => {
     clearTimeout(searchTimer as ReturnType<typeof setTimeout>);
 
     setSearchTimer(
       setTimeout(() => {
-        if (usersList) {
-          const filteredUsers = usersList.filter((user) =>
-            user.name.toLowerCase().includes(search.toLowerCase())
-          );
+        if (users.length) {
+          const filteredUsers = getFilteredUsers(users);
           setTotalPages(Math.ceil(filteredUsers.length / 10));
           setCurrentUsers(filteredUsers.slice(0, 10));
         }
@@ -88,12 +128,14 @@ const AdminPage: React.FC = () => {
               <UserTable
                 data={currentUsers}
                 handleClickUser={(userData) => handleShowUserDetails(userData)}
+                handleSortUser={(sortOrder) => handleSortUsers(sortOrder)}
               />
             </div>
 
             {totalPages !== 0 && (
               <div className="admin-page__pagination">
                 <Pagination
+                  currentPage={currentPage}
                   totalPages={totalPages}
                   handlePageChange={handlePageChange}
                 />
