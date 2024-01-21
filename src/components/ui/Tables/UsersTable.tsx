@@ -35,18 +35,20 @@ const UserTable: React.FC<IUserTableProps> = ({
             <th className="table__header-cell">Роль</th>
             <th className="table__header-cell">Подписка</th>
             <th className="table__header-cell table__cell_with-button">
-              Токены
-              <button
-                className="button-icon"
-                type="button"
-                onClick={handleClickSort}
-              >
-                {sortOrder === 'desc' ? (
-                  <IconArrowDown stylesClass="table__icon-sort" size={18} />
-                ) : (
-                  <IconArrowUp stylesClass="table__icon-sort" size={18} />
-                )}
-              </button>
+              <span className="table__cell-buttons">
+                Токены
+                <button
+                  className="button-icon"
+                  type="button"
+                  onClick={handleClickSort}
+                >
+                  {sortOrder === 'desc' ? (
+                    <IconArrowDown stylesClass="table__icon-sort" size={18} />
+                  ) : (
+                    <IconArrowUp stylesClass="table__icon-sort" size={18} />
+                  )}
+                </button>
+              </span>
             </th>
             <th className="table__header-cell">Действия</th>
           </tr>

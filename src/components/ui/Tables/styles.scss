@@ -17,8 +17,9 @@
   }
 
   &__header-cell {
-    padding: 14px 34.5px;
+    padding: 14px 8px;
     background-color: $color-blue-purple-dark;
+    text-align: center;
     color: $color-gray;
     font-size: 12px;
     font-style: normal;
@@ -74,6 +75,7 @@
   }
 
   &__icon-sort {
+    flex-shrink: 0;
     color: $color-gray-bluish;
   }
 
