@@ -11,7 +11,6 @@ interface IUserTransactionsTableProps {
 const UserTransactionsTable: React.FC<IUserTransactionsTableProps> = ({
   data,
 }) => {
-  console.log(data);
   return (
     <table className="table table_flex table_three-columns">
       <thead className="table__thead">
